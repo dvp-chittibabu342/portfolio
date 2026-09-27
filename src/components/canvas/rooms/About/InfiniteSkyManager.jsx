@@ -417,29 +417,29 @@ const AWARDS_DATA = {
     featured: {
         id: 'award-featured',
         layout: 'certificate_grid',
-        title: 'Academic & Hackathon Honors',
+        title: 'Activities & Project Highlights',
         items: [
-            { label: 'eMudhra Hackathon 2026', date: '2026', image: '/textures/about/FEATURED.webp', url: '#' },
-            { label: 'Rotaract Club Leadership', date: '2025-2026', image: '/textures/about/FEATURED.webp', url: '#' },
-            { label: 'MSRUAS 3rd Year B.Tech', date: 'Graduation: 2027', image: '/textures/about/FEATURED.webp', url: '#' },
+            { label: 'AI Road Hazard Intelligence', date: 'eMudhra Hackathon 2026', image: '/textures/about/FEATURED.webp', url: '#' },
+            { label: 'Director of Club Services', date: 'Rotaract Club of Bangalore Warriors', image: '/textures/about/FEATURED.webp', url: '#' },
+            { label: 'B.Tech — Electronics & Communication Engineering', date: 'MSRUAS • 3rd Year', image: '/textures/about/FEATURED.webp', url: '#' },
         ],
         platformConfig: {
-            label: 'HONOR',
+            label: 'OVERVIEW',
             color: '#1a1a1a',
-            icon: '⭐'
+            icon: '✦'
         }
     },
     sotd: {
         id: 'award-sotd',
         layout: 'certificate_grid',
-        title: 'Hackathons & Competitions',
+        title: 'Hackathon Project',
         items: [
-            { label: 'eMudhra Hackathon 2026 — Road Hazard AI', date: '2026', image: '/textures/about/SOTDAYYOUNGMULTIGSAP.webp', url: '#' },
+            { label: 'AI Road Hazard Intelligence (IMU + CV + GPS)', date: 'eMudhra Hackathon 2026', image: '/textures/about/SOTDAYYOUNGMULTIGSAP.webp', url: '#' },
         ],
         platformConfig: {
             label: 'HACKATHON',
             color: '#1a1a1a',
-            icon: '🏆'
+            icon: '✦'
         }
     },
     sotm: {
@@ -448,12 +448,12 @@ const AWARDS_DATA = {
         title: 'Hardware & AI Projects',
         items: [
             { label: 'ESP32 Real-Time Health Monitor', date: 'Sep 2025 – Oct 2025', image: '/textures/about/SOTDAYYOUNGMULTICSSWINNER.webp', url: '#' },
-            { label: 'Hand Sign & Gesture CV Pipeline', date: 'Nov 2025 – Dec 2025', image: '/textures/about/SOTDAYYOUNGMULTIORPETRON.webp', url: '#' },
+            { label: 'Hand Sign / Word Sign Detection', date: 'Nov 2025 – Dec 2025', image: '/textures/about/SOTDAYYOUNGMULTIORPETRON.webp', url: '#' },
         ],
         platformConfig: {
-            label: 'PROJECT',
+            label: 'PROJECTS',
             color: '#1a1a1a',
-            icon: '📅'
+            icon: '✦'
         }
     },
     other: {
@@ -461,12 +461,12 @@ const AWARDS_DATA = {
         layout: 'certificate_grid',
         title: 'Leadership & Extracurricular',
         items: [
-            { label: 'Director of Club Services — Rotaract Club of Bangalore Warriors', date: '2025-2026', image: '/textures/about/SOTDAYYOUNGMULTIDESIGNNOMINESS.webp', url: '#' },
+            { label: 'Director of Club Services — Rotaract Club of Bangalore Warriors', date: 'Leadership', image: '/textures/about/SOTDAYYOUNGMULTIDESIGNNOMINESS.webp', url: '#' },
         ],
         platformConfig: {
             label: 'LEADERSHIP',
             color: '#1a1a1a',
-            icon: '👑'
+            icon: '✦'
         }
     }
 };

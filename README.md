@@ -88,5 +88,5 @@ All PRs improving the shader physics, 3D math logic, or component memoization ru
 
 ---
 
-*Portfolio of [Dasari Venkata Panakala Chitti Babu](https://portfolio.dasari.dev).*
+*Portfolio of Dasari Venkata Panakala Chitti Babu.*
 

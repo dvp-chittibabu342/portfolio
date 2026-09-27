@@ -150,12 +150,10 @@ const SmoothButton = ({ texture, onClick, position, size, text, fontPath }) => {
 // Set VITE_WEB3FORMS_KEY in .env (local dev) and in Cloudflare Pages dashboard (production).
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
 
-// Allowed domains for form submission
+// Allowed domains for form submission in development
 const ALLOWED_ORIGINS = [
     'localhost',
     '127.0.0.1',
-    'dasari.dev',
-    'portfolio.dasari.dev',
 ];
 
 // ═══════════════════════════════════════════════════════════════════════

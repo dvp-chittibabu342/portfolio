@@ -2,15 +2,13 @@
  * seo-plugin.js — Build-time SEO & Structured Data Generator
  *
  * Generates dynamic JSON-LD structured data, metadata tags, and llms.txt
- * for Dasari Venkata Panakala Chitti Babu's portfolio.
+ * strictly sourced from Dasari Venkata Panakala Chitti Babu's resume.
  */
 
 const DASARI_GLOBAL = {
     siteTitle: 'Dasari Venkata Panakala Chitti Babu | Embedded Systems & Hardware Engineer',
     siteDescription: 'Interactive 3D portfolio of Dasari Venkata Panakala Chitti Babu. Embedded Systems Engineer specializing in ESP32, FPGA fundamentals, Verilog HDL, VLSI, and AI-driven hardware.',
     aboutMe: 'Electronics and Communication Engineering undergraduate at M. S. Ramaiah University of Applied Sciences, Bangalore (Graduation: 2027). Hands-on experience building embedded systems on ESP32, FPGA fundamentals, Verilog HDL, hardware-software co-design, and computer vision pipelines.',
-    githubUrl: 'https://github.com',
-    linkedinUrl: 'https://www.linkedin.com',
 };
 
 const DASARI_PROJECTS = [
@@ -50,60 +48,62 @@ const DASARI_PROJECTS = [
 
 const DASARI_STUDIO = [
     {
-        title: 'Neuro-Symbolic Sensor Fusion for Road Hazard Intelligence',
-        platform: 'article',
-        description: 'Architecting an edge multi-sensor pipeline fusing MPU6050 IMU accelerometer data with ESP32-CAM visual classifications for real-time road anomaly detection.',
-        readTime: '6 min',
-        date: '2026-03-01'
+        title: 'AI-Powered Road Hazard Intelligence: IMU + CV + GPS Fusion',
+        platform: 'architecture',
+        description: 'Neuro-symbolic road hazard detection system fusing IMU vibration analysis, CNN-based visual classification (YOLO/MobileNet), and GPS-based multi-vehicle clustering for eMudhra Hackathon 2026.',
+        date: '2026'
     },
     {
-        title: 'Building Real-Time Vital Telemetry with ESP32 & Embedded C',
-        platform: 'article',
-        description: 'Sensor bus synchronization across I2C and SPI, real-time interrupt handling, and low-latency wireless vital data transmission on dual-core ESP32.',
-        readTime: '5 min',
-        date: '2025-10-15'
+        title: 'Rule-Based Confidence-Cascade Escalation Model',
+        platform: 'system',
+        description: 'Built a rule-based confidence-cascade escalation model (log -> warn -> alert) to convert multi-vehicle detections into driver warnings and authority alerts.',
+        date: '2026'
     },
     {
-        title: 'Real-Time Hand Landmark Extraction with MediaPipe & CNNs',
-        platform: 'article',
-        description: 'Constructing a lightweight computer vision pipeline extracting 21 3D hand coordinates for real-time sign and gesture classification.',
-        readTime: '4 min',
-        date: '2025-12-10'
+        title: 'Road Hazard Hardware Architecture & Feasibility',
+        platform: 'hardware',
+        description: 'Produced a cost-estimated hardware architecture (ESP32, MPU6050, NEO-6M GPS, ESP32-CAM) for a 3-vehicle demo. Conducted literature survey across IEEE Xplore, arXiv, and MDPI.',
+        date: '2026'
     },
     {
-        title: 'Digital Logic Design & Hardware Synthesis with Verilog HDL',
-        platform: 'article',
-        description: 'From behavioral RTL modeling to FPGA logic synthesis using Intel Quartus Prime Lite: clock domain crossings, finite state machines, and timing closure.',
-        readTime: '7 min',
-        date: '2026-01-20'
+        title: 'ESP32-Based Health Monitoring System',
+        platform: 'system',
+        description: 'Designed and implemented a real-time health monitoring system using ESP32, interfacing multiple physiological sensors for live vital parameter acquisition.',
+        date: 'Sep 2025 – Oct 2025'
     },
     {
-        title: 'Agency Web Engineering: Next.js, TypeScript & GSAP at APSLOCK',
-        platform: 'article',
-        description: 'Production frontend workflows: bridging responsive Tailwind design systems with high-performance 60fps GSAP scroll animations.',
-        readTime: '5 min',
-        date: '2026-04-01'
+        title: 'MediaPipe Hand Landmark Extraction Pipeline',
+        platform: 'software',
+        description: 'Developed a computer vision pipeline using MediaPipe for hand landmark extraction from video input in Python, with CNN gesture classification.',
+        date: 'Nov 2025 – Dec 2025'
+    },
+    {
+        title: 'Agency Client Website Engineering — APSLOCK',
+        platform: 'web',
+        description: 'Collaborated with a team to build the agency client-facing website using Next.js, TypeScript, and Tailwind CSS with custom GSAP and Framer Motion animations.',
+        date: 'Mar 2026 – Apr 2026',
+        url: 'https://www.apslock.com/'
     }
 ];
 
-const DASARI_AWARDS = [
+const DASARI_ACTIVITIES = [
     {
         title: 'eMudhra Hackathon 2026 — Road Hazard Intelligence',
-        category: 'sotd',
+        category: 'project',
         date: '2026',
         description: 'Designed neuro-symbolic road hazard detection system fusing IMU vibration, CNN vision, and multi-vehicle clustering.'
     },
     {
         title: 'Director of Club Services — Rotaract Club of Bangalore Warriors',
-        category: 'sotm',
-        date: '2025 - Present',
+        category: 'leadership',
+        date: 'Extracurricular',
         description: 'Co-organized technical and social initiatives; strengthened teamwork, communication, and leadership through cross-functional collaboration.'
     },
     {
-        title: 'Academic Honors in VLSI, Embedded Systems & Digital Electronics',
-        category: 'other',
-        date: '2023 - 2027',
-        description: 'M. S. Ramaiah University of Applied Sciences, Bangalore. Bachelor of Technology in Electronics & Communication Engineering.'
+        title: 'Relevant Engineering Coursework — M. S. Ramaiah University of Applied Sciences',
+        category: 'education',
+        date: 'Expected Graduation: 2027',
+        description: 'VLSI Design, Embedded Systems, Digital Electronics, C Programming, Python Programming.'
     }
 ];
 
@@ -118,24 +118,17 @@ const DASARI_FAQS = [
     },
     {
         question: 'How can I contact Dasari?',
-        answer: 'You can contact him via email at pavandasari342@gmail.com, by phone at +91 7989127818, or connect on LinkedIn and GitHub.'
+        answer: 'You can contact him via email at pavandasari342@gmail.com or by phone at +91 7989127818.'
     }
 ];
 
-function formatIsoDate(dateString) {
-    if (!dateString) return undefined;
-    if (dateString.includes('T')) return dateString;
-    return `${dateString}T12:00:00Z`;
-}
-
-function buildJsonLd(globalInfo, projects, studio, awards, faqList) {
+function buildJsonLd(globalInfo, projects, studio, activities, faqList) {
     const graph = [];
 
     const person = {
         '@type': 'Person',
-        '@id': 'https://portfolio.dasari.dev/#person',
+        '@id': '#person',
         name: 'Dasari Venkata Panakala Chitti Babu',
-        url: 'https://portfolio.dasari.dev',
         jobTitle: 'Embedded Systems Engineer | FPGA, VLSI & AI-Driven Hardware',
         description: globalInfo.aboutMe,
         knowsAbout: [
@@ -144,8 +137,6 @@ function buildJsonLd(globalInfo, projects, studio, awards, faqList) {
             'MATLAB', 'Next.js', 'TypeScript', 'Tailwind CSS', 'React', 'GSAP'
         ],
         sameAs: [
-            'https://www.linkedin.com',
-            'https://github.com',
             'https://www.apslock.com/'
         ]
     };
@@ -153,27 +144,25 @@ function buildJsonLd(globalInfo, projects, studio, awards, faqList) {
 
     const website = {
         '@type': 'WebSite',
-        '@id': 'https://portfolio.dasari.dev/#website',
-        url: 'https://portfolio.dasari.dev',
+        '@id': '#website',
         name: globalInfo.siteTitle,
         description: globalInfo.siteDescription,
-        publisher: { '@id': 'https://portfolio.dasari.dev/#person' }
+        publisher: { '@id': '#person' }
     };
     graph.push(website);
 
     const profilePage = {
         '@type': 'ProfilePage',
-        '@id': 'https://portfolio.dasari.dev/#profilepage',
-        url: 'https://portfolio.dasari.dev',
-        mainEntity: { '@id': 'https://portfolio.dasari.dev/#person' },
-        about: { '@id': 'https://portfolio.dasari.dev/#person' }
+        '@id': '#profilepage',
+        mainEntity: { '@id': '#person' },
+        about: { '@id': '#person' }
     };
     graph.push(profilePage);
 
     if (faqList && faqList.length > 0) {
         const faqPage = {
             '@type': 'FAQPage',
-            '@id': 'https://portfolio.dasari.dev/#faq',
+            '@id': '#faq',
             mainEntity: faqList.map(item => ({
                 '@type': 'Question',
                 name: item.question,
@@ -189,7 +178,7 @@ function buildJsonLd(globalInfo, projects, studio, awards, faqList) {
     if (projects && projects.length > 0) {
         graph.push({
             '@type': 'ItemList',
-            '@id': 'https://portfolio.dasari.dev/#projectslist',
+            '@id': '#projectslist',
             name: 'Engineering Projects by Dasari Venkata Panakala Chitti Babu',
             description: 'Selected projects in embedded systems, FPGA, computer vision, and web applications.',
             numberOfItems: projects.length,
@@ -201,7 +190,7 @@ function buildJsonLd(globalInfo, projects, studio, awards, faqList) {
                     name: p.seoTitle || p.title,
                     description: p.seoDescription || p.description || '',
                     url: p.url || undefined,
-                    creator: { '@id': 'https://portfolio.dasari.dev/#person' },
+                    creator: { '@id': '#person' },
                     keywords: p.techStack ? p.techStack.join(', ') : undefined
                 }
             }))
@@ -214,7 +203,7 @@ function buildJsonLd(globalInfo, projects, studio, awards, faqList) {
     };
 }
 
-function buildLlmsTxt(globalInfo, projects, studio, awards, faqList) {
+function buildLlmsTxt(globalInfo, projects, studio, activities, faqList) {
     let content = `# ${globalInfo.siteTitle}\n`;
     content += `> ${globalInfo.siteDescription}\n\n`;
 
@@ -243,9 +232,9 @@ function buildLlmsTxt(globalInfo, projects, studio, awards, faqList) {
         content += `\n`;
     }
 
-    if (awards && awards.length > 0) {
-        content += `## Honors & Extracurricular Activities\n`;
-        awards.forEach(a => {
+    if (activities && activities.length > 0) {
+        content += `## Leadership & Extracurricular Activities\n`;
+        activities.forEach(a => {
             content += `- **${a.title}** (${a.date}): ${a.description}\n`;
         });
         content += `\n`;
@@ -267,7 +256,7 @@ export function generateSeoHtml() {
 
     function getLlmsContent() {
         if (!cachedLlmsContent) {
-            cachedLlmsContent = buildLlmsTxt(DASARI_GLOBAL, DASARI_PROJECTS, DASARI_STUDIO, DASARI_AWARDS, DASARI_FAQS);
+            cachedLlmsContent = buildLlmsTxt(DASARI_GLOBAL, DASARI_PROJECTS, DASARI_STUDIO, DASARI_ACTIVITIES, DASARI_FAQS);
         }
         return cachedLlmsContent;
     }
@@ -292,13 +281,13 @@ export function generateSeoHtml() {
                 const globalInfo = DASARI_GLOBAL;
                 const projects = DASARI_PROJECTS;
                 const studio = DASARI_STUDIO;
-                const awards = DASARI_AWARDS;
+                const activities = DASARI_ACTIVITIES;
                 const faqList = DASARI_FAQS;
 
                 const siteTitle = globalInfo.siteTitle;
                 const siteDescription = globalInfo.siteDescription;
 
-                cachedLlmsContent = buildLlmsTxt(globalInfo, projects, studio, awards, faqList);
+                cachedLlmsContent = buildLlmsTxt(globalInfo, projects, studio, activities, faqList);
 
                 let seoHtml = `\n<div id="seo-content" class="sr-only-seo">\n`;
                 seoHtml += `  <header>\n`;
@@ -322,16 +311,16 @@ export function generateSeoHtml() {
                 }
 
                 if (studio && studio.length > 0) {
-                    seoHtml += `  <section id="studio">\n    <h2>Engineering Lab</h2>\n    <ul>\n`;
+                    seoHtml += `  <section id="studio">\n    <h2>Engineering Documentation</h2>\n    <ul>\n`;
                     studio.forEach(s => {
                         seoHtml += `      <li>\n        <h3>${s.title}</h3>\n        <p>${s.description}</p>\n      </li>\n`;
                     });
                     seoHtml += `    </ul>\n  </section>\n`;
                 }
 
-                if (awards && awards.length > 0) {
-                    seoHtml += `  <section id="awards">\n    <h2>Honors & Leadership</h2>\n    <ul>\n`;
-                    awards.forEach(a => {
+                if (activities && activities.length > 0) {
+                    seoHtml += `  <section id="activities">\n    <h2>Leadership & Activities</h2>\n    <ul>\n`;
+                    activities.forEach(a => {
                         seoHtml += `      <li>\n        <h3>${a.title}</h3>\n        <p>${a.date} — ${a.description}</p>\n      </li>\n`;
                     });
                     seoHtml += `    </ul>\n  </section>\n`;
@@ -351,7 +340,7 @@ export function generateSeoHtml() {
 
                 seoHtml += `</div>\n`;
 
-                const jsonLdSchemas = buildJsonLd(globalInfo, projects, studio, awards, faqList);
+                const jsonLdSchemas = buildJsonLd(globalInfo, projects, studio, activities, faqList);
                 const jsonLdScript = `\n  <!-- Dynamic Structured Data (JSON-LD) -->\n  <script type="application/ld+json">\n${JSON.stringify(jsonLdSchemas, null, 2)}\n  </script>\n`;
 
                 let transformedHtml = html.replace(

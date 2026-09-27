@@ -9,7 +9,7 @@ import { isTouchDevice } from '../../../../utils/deviceDetect';
 // Reusable Vector3 to avoid allocations in useFrame
 const _tempScale = new THREE.Vector3();
 
-const SocialBarrel = ({ position, rotation = [0, 0, 0], texturePath, label, onClick, scale = [2.12, 2.3], paintOnBeforeCompile, paintUniforms }) => {
+const SocialBarrel = ({ position, rotation = [0, 0, 0], texturePath, label, onClick, disabled = false, scale = [2.12, 2.3], paintOnBeforeCompile, paintUniforms }) => {
     const meshRef = useRef();
     const materialRef = useRef();
     const paintedRef = useRef();
@@ -64,7 +64,9 @@ const SocialBarrel = ({ position, rotation = [0, 0, 0], texturePath, label, onCl
 
     const handlePointerOver = () => {
         if (isTouch) return;
-        document.body.style.cursor = 'pointer';
+        if (!disabled) {
+            document.body.style.cursor = 'pointer';
+        }
         setHovered(true);
 
         if (materialRef.current) {
@@ -106,7 +108,7 @@ const SocialBarrel = ({ position, rotation = [0, 0, 0], texturePath, label, onCl
             rotation={rotation}
             onClick={(e) => {
                 e.stopPropagation();
-                onClick && onClick();
+                if (!disabled && onClick) onClick();
             }}
             onPointerOver={handlePointerOver}
             onPointerOut={handlePointerOut}

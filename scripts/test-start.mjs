@@ -57,6 +57,7 @@ function setup({ reduced = false } = {}) {
     querySelectorAll: selector => selector === '.work-link' ? links : [links[1]],
     createElement: () => new Element(),
     createDocumentFragment: () => new Element(),
+    getElementById: () => null,
   });
   const media = Object.assign(new Element(), { matches: reduced });
   const window = Object.assign(new Element(), { matchMedia: () => media });

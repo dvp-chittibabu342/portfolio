@@ -26,9 +26,9 @@ export const AUDIO_SETTINGS = {
 // Using CHUNK_LENGTH to create looping story (every ~40 units restarts)
 const STORY_MILESTONES = [
     { id: 'intro', position: [0, 0, -15], type: 'intro', title: 'DASARI', subtitle: '< Embedded Systems & Hardware />' },
-    { id: 'awards', position: [0, 0, -55], type: 'awards', title: 'HACKATHONS', subtitle: 'eMudhra Hackathon 2026 • AI Hazard Detection' },
-    { id: 'journey', position: [0, 0, -95], type: 'journey', title: 'JOURNEY', subtitle: 'B.Tech ECE @ M. S. Ramaiah University' },
-    { id: 'skills', position: [0, 0, -135], type: 'skills', title: 'SKILLS', subtitle: 'ESP32 • Verilog • Python • C • AI/CV' },
+    { id: 'awards', position: [0, 0, -55], type: 'awards', title: 'HACKATHON', subtitle: 'eMudhra Hackathon 2026 • AI Hazard Detection' },
+    { id: 'journey', position: [0, 0, -95], type: 'journey', title: 'EDUCATION', subtitle: 'B.Tech ECE • M. S. Ramaiah University' },
+    { id: 'skills', position: [0, 0, -135], type: 'skills', title: 'SKILLS', subtitle: 'ESP32 • Verilog • Embedded C • Python • AI/CV' },
 ];
 
 const AboutRoom = ({ showRoom, onReady, isExiting, isWarmup }) => {
