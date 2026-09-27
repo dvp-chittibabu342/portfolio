@@ -352,20 +352,20 @@ const IntroMilestone = ({ z, scrollProgressRef }) => {
                 anchorY="middle"
                 font="/fonts/RubikScribble-Regular.ttf"
             >
-                TOMASZ SZMAJDA
+                DASARI CHITTI BABU
             </Text>
 
             {/* Subtitle - Brand (spreads right) */}
             <Text
                 ref={brandRef}
                 position={[0, 4.3, 0.1]}
-                fontSize={0.45}
+                fontSize={0.38}
                 color="#4a4a4a"
                 anchorX="center"
                 anchorY="middle"
                 font="/fonts/CabinSketch-Regular.ttf"
             >
-                (ITOM)
+                EMBEDDED SYSTEMS & HARDWARE ENGINEER
             </Text>
 
             {/* Avatar on cloud - floating + spreads up-left */}
@@ -390,7 +390,7 @@ const IntroMilestone = ({ z, scrollProgressRef }) => {
                 font="/fonts/CabinSketch-Regular.ttf"
                 fontStyle="italic"
             >
-                "Crafting digital experiences
+                "Engineering real-time embedded systems & hardware
             </Text>
 
             {/* Motto - Line 2 (spreads left) */}
@@ -404,7 +404,7 @@ const IntroMilestone = ({ z, scrollProgressRef }) => {
                 font="/fonts/CabinSketch-Regular.ttf"
                 fontStyle="italic"
             >
-                that push creative boundaries"
+                from digital logic to intelligent edge AI"
             </Text>
         </group>
     );
@@ -417,12 +417,11 @@ const AWARDS_DATA = {
     featured: {
         id: 'award-featured',
         layout: 'certificate_grid',
-        title: 'Featured Projects Collection',
+        title: 'Academic & Hackathon Honors',
         items: [
-            { label: 'Featured - Awwwards', date: 'May 2025', image: '/textures/about/FEATURED.webp', url: 'https://awwwards.com' },
-            { label: 'Featured - CSS Design Awards', date: 'June 2025', image: '/textures/about/FEATURED.webp', url: 'https://cssdesignawards.com' },
-            { label: 'Featured - The FWA', date: 'July 2025', image: '/textures/about/FEATURED.webp', url: 'https://thefwa.com' },
-            { label: 'Featured - Behance', date: 'August 2025', image: '/textures/about/FEATURED.webp', url: 'https://behance.net' },
+            { label: 'eMudhra Hackathon 2026', date: '2026', image: '/textures/about/FEATURED.webp', url: '#' },
+            { label: 'Rotaract Club Leadership', date: '2025-2026', image: '/textures/about/FEATURED.webp', url: '#' },
+            { label: 'MSRUAS 3rd Year B.Tech', date: 'Graduation: 2027', image: '/textures/about/FEATURED.webp', url: '#' },
         ],
         platformConfig: {
             label: 'HONOR',
@@ -433,15 +432,12 @@ const AWARDS_DATA = {
     sotd: {
         id: 'award-sotd',
         layout: 'certificate_grid',
-        title: 'Site of the Day Awards',
+        title: 'Hackathons & Competitions',
         items: [
-            { label: 'SOTD - GSAP', date: 'February 13, 2026', image: '/textures/about/SOTDAYYOUNGMULTIGSAP.webp', url: 'https://www.linkedin.com/posts/greensock_site-of-the-day-young-multi-this-immersive-activity-7427567524940017664-zU2n?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE3TV6UBqXoaJXUN5-1s3ij6SQJwTRAcbCM' },
-            { label: 'SOTD - CSS Winner', date: 'January 24, 2026', image: '/textures/about/SOTDAYYOUNGMULTICSSWINNER.webp', url: 'https://www.csswinner.com/details/young-multi-official-experience/19045' },
-            { label: 'SOTD - Orpetron', date: 'January 29, 2026', image: '/textures/about/SOTDAYYOUNGMULTIORPETRON.webp', url: 'https://orpetron.com/sites/young-multi/' },
-            { label: 'SOTD - Design Nominess', date: 'February 17, 2026', image: '/textures/about/SOTDAYYOUNGMULTIDESIGNNOMINESS.webp', url: 'https://www.designnominees.com/sites/young-multi' }
+            { label: 'eMudhra Hackathon 2026 — Road Hazard AI', date: '2026', image: '/textures/about/SOTDAYYOUNGMULTIGSAP.webp', url: '#' },
         ],
         platformConfig: {
-            label: 'AWARD',
+            label: 'HACKATHON',
             color: '#1a1a1a',
             icon: '🏆'
         }
@@ -449,10 +445,13 @@ const AWARDS_DATA = {
     sotm: {
         id: 'award-sotm',
         layout: 'certificate_grid',
-        title: 'Site of the Month Awards',
-        items: [],
+        title: 'Hardware & AI Projects',
+        items: [
+            { label: 'ESP32 Real-Time Health Monitor', date: 'Sep 2025 – Oct 2025', image: '/textures/about/SOTDAYYOUNGMULTICSSWINNER.webp', url: '#' },
+            { label: 'Hand Sign & Gesture CV Pipeline', date: 'Nov 2025 – Dec 2025', image: '/textures/about/SOTDAYYOUNGMULTIORPETRON.webp', url: '#' },
+        ],
         platformConfig: {
-            label: 'AWARD',
+            label: 'PROJECT',
             color: '#1a1a1a',
             icon: '📅'
         }
@@ -460,10 +459,12 @@ const AWARDS_DATA = {
     other: {
         id: 'award-other',
         layout: 'certificate_grid',
-        title: 'Other Awards',
-        items: [],
+        title: 'Leadership & Extracurricular',
+        items: [
+            { label: 'Director of Club Services — Rotaract Club of Bangalore Warriors', date: '2025-2026', image: '/textures/about/SOTDAYYOUNGMULTIDESIGNNOMINESS.webp', url: '#' },
+        ],
         platformConfig: {
-            label: 'PRESTIGE',
+            label: 'LEADERSHIP',
             color: '#1a1a1a',
             icon: '👑'
         }
@@ -624,7 +625,7 @@ const AwardsMilestone = ({ z, scrollProgressRef }) => {
                 anchorY="middle"
                 font="/fonts/RubikScribble-Regular.ttf"
             >
-                AWARDS
+                HACKATHONS
             </Text>
 
             {/* === SOTD (behind SOTY, rendered second) === */}
@@ -667,13 +668,13 @@ const AwardsMilestone = ({ z, scrollProgressRef }) => {
                 {/* AWARD LABEL */}
                 <Text
                     position={[0, 0.95, 0.01]}
-                    fontSize={0.45}
+                    fontSize={0.4}
                     color="#1a1a1a"
                     anchorX="center"
                     anchorY="middle"
                     font="/fonts/CabinSketch-Bold.ttf"
                 >
-                    SOTD
+                    eMUDHRA
                 </Text>
                 {/* AWARD COUNT */}
                 <Text
@@ -728,13 +729,13 @@ const AwardsMilestone = ({ z, scrollProgressRef }) => {
                 {/* AWARD LABEL */}
                 <Text
                     position={[0, 0.95, 0.01]}
-                    fontSize={0.45}
+                    fontSize={0.4}
                     color="#1a1a1a"
                     anchorX="center"
                     anchorY="middle"
                     font="/fonts/CabinSketch-Bold.ttf"
                 >
-                    SOTM
+                    PROJECTS
                 </Text>
                 {/* AWARD COUNT */}
                 <Text
@@ -788,13 +789,13 @@ const AwardsMilestone = ({ z, scrollProgressRef }) => {
                 {/* AWARD LABEL */}
                 <Text
                     position={[0, 0.95, 0.01]}
-                    fontSize={0.45}
+                    fontSize={0.4}
                     color="#1a1a1a"
                     anchorX="center"
                     anchorY="middle"
                     font="/fonts/CabinSketch-Bold.ttf"
                 >
-                    OTHER
+                    ROLES
                 </Text>
                 {/* AWARD COUNT */}
                 <Text
@@ -937,7 +938,7 @@ const JourneyMilestone = ({ z, scrollProgressRef }) => {
                     anchorY="middle"
                     font="/fonts/CabinSketch-Bold.ttf"
                 >
-                    2025-NOW
+                    2023-2027
                 </Text>
             </group>
 
@@ -960,7 +961,7 @@ const JourneyMilestone = ({ z, scrollProgressRef }) => {
                     anchorY="middle"
                     font="/fonts/CabinSketch-Bold.ttf"
                 >
-                    2023-NOW
+                    2026
                 </Text>
             </group>
         </group>
@@ -976,20 +977,20 @@ const JourneyMilestone = ({ z, scrollProgressRef }) => {
 // === EDYTUJ WYSOKOŚĆ TUTAJ (zmień wartość 'y' dla każdego balona) ===
 const BALLOON_CONFIG = [
     // Large balloons (main skills) - front and center
-    { texture: '/textures/about/reactduzybalon.webp', paintedTexture: '/textures/about/reactduzybalon_painted.webp', label: 'React', size: 'large', x: -2.5, y: 2, z: 0.3, phase: 0 },
-    { texture: '/textures/about/threejsduzybalon.webp', paintedTexture: '/textures/about/threejsduzybalon_painted.webp', label: 'Three.js', size: 'large', x: 2.5, y: 2.5, z: 0.2, phase: 1.5 },
-    { texture: '/textures/about/GSAPduzybalon.webp', paintedTexture: '/textures/about/GSAPduzybalon_painted.webp', label: 'GSAP', size: 'large', x: 0, y: 3, z: 0.5, phase: 3 },
+    { texture: '/textures/about/reactduzybalon.webp', paintedTexture: '/textures/about/reactduzybalon_painted.webp', label: 'ESP32', size: 'large', x: -2.5, y: 2, z: 0.3, phase: 0 },
+    { texture: '/textures/about/threejsduzybalon.webp', paintedTexture: '/textures/about/threejsduzybalon_painted.webp', label: 'Verilog', size: 'large', x: 2.5, y: 2.5, z: 0.2, phase: 1.5 },
+    { texture: '/textures/about/GSAPduzybalon.webp', paintedTexture: '/textures/about/GSAPduzybalon_painted.webp', label: 'Embedded C', size: 'large', x: 0, y: 3, z: 0.5, phase: 3 },
 
     // Medium balloons - scattered around
-    { texture: '/textures/about/JSSREDNIBALON.webp', paintedTexture: '/textures/about/JSSREDNIBALON_painted.webp', label: 'JavaScript', size: 'medium', x: -4, y: 1, z: -0.3, phase: 0.8 },
-    { texture: '/textures/about/csssrednibalon.webp', paintedTexture: '/textures/about/csssrednibalon_painted.webp', label: 'CSS', size: 'medium', x: 4, y: 1.5, z: -0.2, phase: 2.2 },
+    { texture: '/textures/about/JSSREDNIBALON.webp', paintedTexture: '/textures/about/JSSREDNIBALON_painted.webp', label: 'Python', size: 'medium', x: -4, y: 1, z: -0.3, phase: 0.8 },
+    { texture: '/textures/about/csssrednibalon.webp', paintedTexture: '/textures/about/csssrednibalon_painted.webp', label: 'OpenCV', size: 'medium', x: 4, y: 1.5, z: -0.2, phase: 2.2 },
     { texture: '/textures/about/nextjssrednibalon.webp', paintedTexture: '/textures/about/nextjssrednibalon_painted.webp', label: 'Next.js', size: 'medium', x: 0, y: 0.5, z: -0.4, phase: 4 },
 
     // Small balloons - background accents
-    { texture: '/textures/about/htmlmalybalon.webp', paintedTexture: '/textures/about/htmlmalybalon_painted.webp', label: 'HTML', size: 'small', x: -5.5, y: 2.5, z: -0.8, phase: 1.2 },
+    { texture: '/textures/about/htmlmalybalon.webp', paintedTexture: '/textures/about/htmlmalybalon_painted.webp', label: 'MATLAB', size: 'small', x: -5.5, y: 2.5, z: -0.8, phase: 1.2 },
     { texture: '/textures/about/gitmalybalon.webp', paintedTexture: '/textures/about/gitmalybalon_painted.webp', label: 'Git', size: 'small', x: 5.5, y: 3, z: -0.7, phase: 2.8 },
-    { texture: '/textures/about/figmamalybalon.webp', paintedTexture: '/textures/about/figmamalybalon_painted.webp', label: 'Figma', size: 'small', x: -3, y: 4.5, z: -0.5, phase: 3.5 },
-    { texture: '/textures/about/firebasemalybalon.webp', paintedTexture: '/textures/about/firebasemalybalon_painted.webp', label: 'Firebase', size: 'small', x: 3.5, y: 4, z: -0.6, phase: 4.5 },
+    { texture: '/textures/about/figmamalybalon.webp', paintedTexture: '/textures/about/figmamalybalon_painted.webp', label: 'MediaPipe', size: 'small', x: -3, y: 4.5, z: -0.5, phase: 3.5 },
+    { texture: '/textures/about/firebasemalybalon.webp', paintedTexture: '/textures/about/firebasemalybalon_painted.webp', label: 'React', size: 'small', x: 3.5, y: 4, z: -0.6, phase: 4.5 },
 ];
 
 // Size multipliers for balloon categories

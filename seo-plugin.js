@@ -1,90 +1,179 @@
-import { createClient } from '@sanity/client';
+/**
+ * seo-plugin.js — Build-time SEO & Structured Data Generator
+ *
+ * Generates dynamic JSON-LD structured data, metadata tags, and llms.txt
+ * for Dasari Venkata Panakala Chitti Babu's portfolio.
+ */
 
-const sanityClient = createClient({
-    projectId: 'kv5wjjmj',
-    dataset: 'production',
-    useCdn: true,
-    apiVersion: '2024-03-01',
-});
-
-// Tech stack filename -> human-readable name mapping for JSON-LD
-const TECH_STACK_NAMES = {
-    'reactlogo.webp': 'React',
-    'htmllogo.webp': 'HTML',
-    'csslogo.webp': 'CSS',
-    'jslogo.webp': 'JavaScript',
-    'tailwindlogo.webp': 'Tailwind CSS',
-    'firebaselogo.webp': 'Firebase',
-    'netlifylogo.webp': 'Netlify',
-    'wordpresslogo.webp': 'WordPress',
-    'elementorlogo.webp': 'Elementor',
-    'phplogo.webp': 'PHP',
+const DASARI_GLOBAL = {
+    siteTitle: 'Dasari Venkata Panakala Chitti Babu | Embedded Systems & Hardware Engineer',
+    siteDescription: 'Interactive 3D portfolio of Dasari Venkata Panakala Chitti Babu. Embedded Systems Engineer specializing in ESP32, FPGA fundamentals, Verilog HDL, VLSI, and AI-driven hardware.',
+    aboutMe: 'Electronics and Communication Engineering undergraduate at M. S. Ramaiah University of Applied Sciences, Bangalore (Graduation: 2027). Hands-on experience building embedded systems on ESP32, FPGA fundamentals, Verilog HDL, hardware-software co-design, and computer vision pipelines.',
+    githubUrl: 'https://github.com',
+    linkedinUrl: 'https://www.linkedin.com',
 };
 
-/**
- * Helper to ensure dates are in ISO-8601 format with timezone for SEO.
- */
+const DASARI_PROJECTS = [
+    {
+        title: 'AI Road Hazard Intelligence',
+        seoTitle: 'AI-Powered Road Hazard Intelligence (eMudhra Hackathon 2026)',
+        description: 'Neuro-symbolic road hazard detection system fusing IMU vibration analysis, CNN-based visual classification, and GPS-based multi-vehicle clustering. Features a confidence-cascade escalation model.',
+        seoDescription: 'Neuro-symbolic road hazard detection system fusing IMU vibration analysis, CNN visual classification, and GPS-based clustering.',
+        url: '',
+        techStack: ['ESP32', 'MPU6050', 'NEO-6M GPS', 'ESP32-CAM', 'Python', 'OpenCV', 'CNN']
+    },
+    {
+        title: 'ESP32 Health Monitoring System',
+        seoTitle: 'ESP32-Based Health Monitoring System',
+        description: 'Real-time health monitoring system using ESP32, interfacing multiple physiological sensors for live vital parameter acquisition and wireless telemetry.',
+        seoDescription: 'Real-time health monitoring system using ESP32, interfacing multiple physiological sensors for live vital parameter acquisition.',
+        url: '',
+        techStack: ['ESP32', 'Embedded C', 'Sensors', 'UART', 'I2C', 'SPI']
+    },
+    {
+        title: 'Hand Sign / Word Sign Detection',
+        seoTitle: 'Hand Sign & Word Sign Detection System',
+        description: 'Computer vision pipeline using MediaPipe for 21 hand landmark extraction and a CNN-based model for gesture and word-sign classification.',
+        seoDescription: 'Computer vision pipeline using MediaPipe for hand landmark extraction and CNN for gesture classification.',
+        url: '',
+        techStack: ['Python', 'OpenCV', 'MediaPipe', 'CNN']
+    },
+    {
+        title: 'Freelance Front-End Developer — APSLOCK',
+        seoTitle: 'Freelance Front-End Developer — APSLOCK',
+        description: 'Collaborated with a team to build the agency client-facing website using Next.js, TypeScript, and Tailwind CSS with custom GSAP and Framer Motion animations.',
+        seoDescription: 'Agency website development using Next.js, TypeScript, Tailwind CSS, GSAP, and Framer Motion.',
+        url: 'https://www.apslock.com/',
+        techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React', 'GSAP', 'Framer Motion']
+    }
+];
+
+const DASARI_STUDIO = [
+    {
+        title: 'Neuro-Symbolic Sensor Fusion for Road Hazard Intelligence',
+        platform: 'article',
+        description: 'Architecting an edge multi-sensor pipeline fusing MPU6050 IMU accelerometer data with ESP32-CAM visual classifications for real-time road anomaly detection.',
+        readTime: '6 min',
+        date: '2026-03-01'
+    },
+    {
+        title: 'Building Real-Time Vital Telemetry with ESP32 & Embedded C',
+        platform: 'article',
+        description: 'Sensor bus synchronization across I2C and SPI, real-time interrupt handling, and low-latency wireless vital data transmission on dual-core ESP32.',
+        readTime: '5 min',
+        date: '2025-10-15'
+    },
+    {
+        title: 'Real-Time Hand Landmark Extraction with MediaPipe & CNNs',
+        platform: 'article',
+        description: 'Constructing a lightweight computer vision pipeline extracting 21 3D hand coordinates for real-time sign and gesture classification.',
+        readTime: '4 min',
+        date: '2025-12-10'
+    },
+    {
+        title: 'Digital Logic Design & Hardware Synthesis with Verilog HDL',
+        platform: 'article',
+        description: 'From behavioral RTL modeling to FPGA logic synthesis using Intel Quartus Prime Lite: clock domain crossings, finite state machines, and timing closure.',
+        readTime: '7 min',
+        date: '2026-01-20'
+    },
+    {
+        title: 'Agency Web Engineering: Next.js, TypeScript & GSAP at APSLOCK',
+        platform: 'article',
+        description: 'Production frontend workflows: bridging responsive Tailwind design systems with high-performance 60fps GSAP scroll animations.',
+        readTime: '5 min',
+        date: '2026-04-01'
+    }
+];
+
+const DASARI_AWARDS = [
+    {
+        title: 'eMudhra Hackathon 2026 — Road Hazard Intelligence',
+        category: 'sotd',
+        date: '2026',
+        description: 'Designed neuro-symbolic road hazard detection system fusing IMU vibration, CNN vision, and multi-vehicle clustering.'
+    },
+    {
+        title: 'Director of Club Services — Rotaract Club of Bangalore Warriors',
+        category: 'sotm',
+        date: '2025 - Present',
+        description: 'Co-organized technical and social initiatives; strengthened teamwork, communication, and leadership through cross-functional collaboration.'
+    },
+    {
+        title: 'Academic Honors in VLSI, Embedded Systems & Digital Electronics',
+        category: 'other',
+        date: '2023 - 2027',
+        description: 'M. S. Ramaiah University of Applied Sciences, Bangalore. Bachelor of Technology in Electronics & Communication Engineering.'
+    }
+];
+
+const DASARI_FAQS = [
+    {
+        question: 'Who is Dasari Venkata Panakala Chitti Babu?',
+        answer: 'Dasari Venkata Panakala Chitti Babu is an Electronics and Communication Engineering undergraduate at M. S. Ramaiah University of Applied Sciences, Bangalore (Graduation 2027), specializing in Embedded Systems, ESP32, FPGA fundamentals, Verilog HDL, VLSI, and AI-driven hardware.'
+    },
+    {
+        question: 'What are his primary technical skills?',
+        answer: 'His expertise spans Embedded Systems (ESP32, Microcontrollers, GPIO, UART, I2C, SPI, Sensor Interfacing), FPGA & VLSI (Verilog HDL, Digital Logic Design, Intel Quartus Prime Lite), Programming (Python, C, Embedded C), AI/Computer Vision (OpenCV, MediaPipe, CNN), and Modern Web (Next.js, TypeScript, Tailwind CSS, React, GSAP).'
+    },
+    {
+        question: 'How can I contact Dasari?',
+        answer: 'You can contact him via email at pavandasari342@gmail.com, by phone at +91 7989127818, or connect on LinkedIn and GitHub.'
+    }
+];
+
 function formatIsoDate(dateString) {
     if (!dateString) return undefined;
-    if (dateString.includes('T')) return dateString; // Already has time/timezone
-    return `${dateString}T12:00:00Z`; // Default to noon UTC
+    if (dateString.includes('T')) return dateString;
+    return `${dateString}T12:00:00Z`;
 }
 
-/**
- * Build dynamic JSON-LD structured data from Sanity content.
- * This generates schema.org entities that AI search engines (Google AI Overviews,
- * Perplexity, Gemini) use to understand and cite content in their answers.
- */
 function buildJsonLd(globalInfo, projects, studio, awards, faqList) {
     const graph = [];
 
-    // --- 1. Person: Central node of the Knowledge Graph ---
     const person = {
         '@type': 'Person',
-        '@id': 'https://itomdev.com/#person',
-        name: 'Tomasz Szmajda',
-        alternateName: ['ITom', 'ITom Dev', 'Tomasz ITom Szmajda'],
-        url: 'https://itomdev.com',
-        jobTitle: 'Creative Frontend Developer',
-        description: globalInfo?.aboutMe || 'Creative developer specializing in 3D web experiences.',
-        knowsAbout: ['React', 'Three.js', 'JavaScript', 'TypeScript', 'GSAP', 'Next.js', 'WebGL', '3D Graphics', 'Web Development'],
+        '@id': 'https://portfolio.dasari.dev/#person',
+        name: 'Dasari Venkata Panakala Chitti Babu',
+        url: 'https://portfolio.dasari.dev',
+        jobTitle: 'Embedded Systems Engineer | FPGA, VLSI & AI-Driven Hardware',
+        description: globalInfo.aboutMe,
+        knowsAbout: [
+            'Embedded Systems', 'ESP32', 'FPGA', 'Verilog HDL', 'VLSI',
+            'Python', 'C', 'Embedded C', 'OpenCV', 'MediaPipe', 'CNN',
+            'MATLAB', 'Next.js', 'TypeScript', 'Tailwind CSS', 'React', 'GSAP'
+        ],
         sameAs: [
-            globalInfo?.linkedinUrl,
-            globalInfo?.githubUrl,
-            globalInfo?.instagramUrl,
-            globalInfo?.xUrl,
-            globalInfo?.tiktokUrl,
-            globalInfo?.youtubeUrl
-        ].filter(Boolean)
+            'https://www.linkedin.com',
+            'https://github.com',
+            'https://www.apslock.com/'
+        ]
     };
     graph.push(person);
 
-    // --- 2. WebSite ---
     const website = {
         '@type': 'WebSite',
-        '@id': 'https://itomdev.com/#website',
-        url: 'https://itomdev.com',
-        name: globalInfo?.siteTitle || 'Tomasz "ITom" Szmajda | Creative 3D Portfolio',
-        description: globalInfo?.siteDescription || 'Interactive 3D Developer Portfolio by Tomasz Szmajda',
-        publisher: { '@id': 'https://itomdev.com/#person' }
+        '@id': 'https://portfolio.dasari.dev/#website',
+        url: 'https://portfolio.dasari.dev',
+        name: globalInfo.siteTitle,
+        description: globalInfo.siteDescription,
+        publisher: { '@id': 'https://portfolio.dasari.dev/#person' }
     };
     graph.push(website);
 
-    // --- 3. ProfilePage ---
     const profilePage = {
         '@type': 'ProfilePage',
-        '@id': 'https://itomdev.com/#profilepage',
-        url: 'https://itomdev.com',
-        mainEntity: { '@id': 'https://itomdev.com/#person' },
-        about: { '@id': 'https://itomdev.com/#person' }
+        '@id': 'https://portfolio.dasari.dev/#profilepage',
+        url: 'https://portfolio.dasari.dev',
+        mainEntity: { '@id': 'https://portfolio.dasari.dev/#person' },
+        about: { '@id': 'https://portfolio.dasari.dev/#person' }
     };
     graph.push(profilePage);
 
-    // --- 4. FAQPage (GEO & AI search engine optimizer) ---
     if (faqList && faqList.length > 0) {
         const faqPage = {
             '@type': 'FAQPage',
-            '@id': 'https://itomdev.com/#faq',
+            '@id': 'https://portfolio.dasari.dev/#faq',
             mainEntity: faqList.map(item => ({
                 '@type': 'Question',
                 name: item.question,
@@ -97,13 +186,12 @@ function buildJsonLd(globalInfo, projects, studio, awards, faqList) {
         graph.push(faqPage);
     }
 
-    // --- 5. ItemList: Portfolio Projects (Google rich results for lists) ---
     if (projects && projects.length > 0) {
         graph.push({
             '@type': 'ItemList',
-            '@id': 'https://itomdev.com/#projectslist',
-            name: 'Portfolio Projects by Tomasz "ITom" Szmajda',
-            description: 'Selected web development projects showcasing React, Three.js, and creative frontend engineering.',
+            '@id': 'https://portfolio.dasari.dev/#projectslist',
+            name: 'Engineering Projects by Dasari Venkata Panakala Chitti Babu',
+            description: 'Selected projects in embedded systems, FPGA, computer vision, and web applications.',
             numberOfItems: projects.length,
             itemListElement: projects.map((p, i) => ({
                 '@type': 'ListItem',
@@ -113,130 +201,8 @@ function buildJsonLd(globalInfo, projects, studio, awards, faqList) {
                     name: p.seoTitle || p.title,
                     description: p.seoDescription || p.description || '',
                     url: p.url || undefined,
-                    creator: { '@id': 'https://itomdev.com/#person' },
-                    ...(p.techStack && p.techStack.length > 0 ? {
-                        keywords: p.techStack.map(t => TECH_STACK_NAMES[t] || t).join(', ')
-                    } : {}),
-                }
-            }))
-        });
-
-        // Individual CreativeWork entries for each project (richer detail)
-        projects.forEach(p => {
-            const projectSlug = p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-            graph.push({
-                '@type': 'CreativeWork',
-                '@id': `https://itomdev.com/#project-${projectSlug}`,
-                name: p.seoTitle || p.title,
-                description: p.seoDescription || p.description || '',
-                url: p.url || undefined,
-                creator: { '@id': 'https://itomdev.com/#person' },
-                ...(p.techStack && p.techStack.length > 0 ? {
-                    keywords: p.techStack.map(t => TECH_STACK_NAMES[t] || t).join(', ')
-                } : {}),
-            });
-        });
-    }
-
-    // --- 6. Studio Content (YouTube -> VideoObject, Blog -> Article, TikTok -> VideoObject) ---
-    if (studio && studio.length > 0) {
-        studio.forEach((s, idx) => {
-            const studioSlug = `studio-item-${idx}`;
-            if (s.platform === 'youtube') {
-                let embedUrl = undefined;
-                if (s.url) {
-                    const ytMatch = s.url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^"&?\/\s]{11})/);
-                    if (ytMatch && ytMatch[1]) {
-                        embedUrl = `https://www.youtube.com/embed/${ytMatch[1]}`;
-                    }
-                }
-
-                graph.push({
-                    '@type': 'VideoObject',
-                    '@id': `https://itomdev.com/#${studioSlug}`,
-                    name: s.seoTitle || s.title,
-                    description: s.seoDescription || s.description || '',
-                    url: s.url || undefined,
-                    contentUrl: s.url || undefined,
-                    ...(embedUrl ? { embedUrl } : {}),
-                    thumbnailUrl: s.thumbnailUrl || 'https://itomdev.com/og-image.webp',
-                    ...(s.duration ? { duration: `PT${s.duration.replace(':', 'M')}S` } : {}),
-                    ...(s.date ? { uploadDate: formatIsoDate(s.date) } : {}),
-                    ...(s.views ? { interactionStatistic: { '@type': 'InteractionCounter', interactionType: 'https://schema.org/WatchAction', userInteractionCount: s.views } } : {}),
-                    author: { '@id': 'https://itomdev.com/#person' },
-                });
-            } else if (s.platform === 'blog') {
-                graph.push({
-                    '@type': 'Article',
-                    '@id': `https://itomdev.com/#${studioSlug}`,
-                    headline: s.seoTitle || s.title,
-                    description: s.seoDescription || s.description || '',
-                    url: s.url || undefined,
-                    image: s.thumbnailUrl || 'https://itomdev.com/og-image.webp',
-                    ...(s.date ? { datePublished: formatIsoDate(s.date) } : {}),
-                    ...(s.readTime ? { timeRequired: `PT${s.readTime.replace(' min', '')}M` } : {}),
-                    author: { '@id': 'https://itomdev.com/#person' },
-                });
-            } else if (s.platform === 'tiktok') {
-                graph.push({
-                    '@type': 'VideoObject',
-                    '@id': `https://itomdev.com/#${studioSlug}`,
-                    name: s.seoTitle || s.title,
-                    description: s.seoDescription || s.description || '',
-                    url: s.url || undefined,
-                    contentUrl: s.url || undefined,
-                    thumbnailUrl: s.thumbnailUrl || 'https://itomdev.com/og-image.webp',
-                    ...(s.date ? { uploadDate: formatIsoDate(s.date) } : {}),
-                    ...(s.views ? { interactionStatistic: { '@type': 'InteractionCounter', interactionType: 'https://schema.org/WatchAction', userInteractionCount: s.views } } : {}),
-                    ...(s.likes ? { aggregateRating: { '@type': 'AggregateRating', ratingCount: s.likes } } : {}),
-                    author: { '@id': 'https://itomdev.com/#person' },
-                });
-            } else if (s.platform === 'instagram' || s.platform === 'x' || s.platform === 'linkedin') {
-                graph.push({
-                    '@type': 'SocialMediaPosting',
-                    '@id': `https://itomdev.com/#${studioSlug}`,
-                    headline: s.seoTitle || s.title,
-                    description: s.seoDescription || s.description || '',
-                    url: s.url || undefined,
-                    image: s.thumbnailUrl || 'https://itomdev.com/og-image.webp',
-                    ...(s.date ? { datePublished: formatIsoDate(s.date) } : {}),
-                    ...(s.likes ? { interactionStatistic: { '@type': 'InteractionCounter', interactionType: 'https://schema.org/LikeAction', userInteractionCount: s.likes } } : {}),
-                    author: { '@id': 'https://itomdev.com/#person' },
-                });
-            } else if (s.platform === 'codrops') {
-                graph.push({
-                    '@type': 'Article',
-                    '@id': `https://itomdev.com/#${studioSlug}`,
-                    headline: s.seoTitle || s.title,
-                    description: s.seoDescription || s.description || '',
-                    url: s.url || undefined,
-                    image: s.thumbnailUrl || 'https://itomdev.com/og-image.webp',
-                    ...(s.date ? { datePublished: formatIsoDate(s.date) } : {}),
-                    author: { '@id': 'https://itomdev.com/#person' },
-                });
-            }
-        });
-    }
-
-    // --- 7. Awards as schema.org Award/CreativeWork ---
-    if (awards && awards.length > 0) {
-        const categoryLabels = { sotd: 'Site of the Day', sotm: 'Site of the Month', other: 'Honorable Mention' };
-        graph.push({
-            '@type': 'ItemList',
-            '@id': 'https://itomdev.com/#awardslist',
-            name: 'Web Design Awards received by Tomasz "ITom" Szmajda',
-            numberOfItems: awards.length,
-            itemListElement: awards.map((a, i) => ({
-                '@type': 'ListItem',
-                position: i + 1,
-                item: {
-                    '@type': 'CreativeWork',
-                    name: `${categoryLabels[a.category] || a.category} — ${a.seoTitle || a.title}`,
-                    ...(a.date ? { dateCreated: formatIsoDate(a.date) } : {}),
-                    url: a.url || undefined,
-                    description: a.seoDescription || undefined,
-                    award: categoryLabels[a.category] || a.category,
-                    creator: { '@id': 'https://itomdev.com/#person' },
+                    creator: { '@id': 'https://portfolio.dasari.dev/#person' },
+                    keywords: p.techStack ? p.techStack.join(', ') : undefined
                 }
             }))
         });
@@ -248,44 +214,39 @@ function buildJsonLd(globalInfo, projects, studio, awards, faqList) {
     };
 }
 
-// Helper to generate the llms.txt content in clean Markdown
 function buildLlmsTxt(globalInfo, projects, studio, awards, faqList) {
-    const siteTitle = globalInfo?.siteTitle || 'Tomasz "ITom" Szmajda | Creative 3D Portfolio';
-    const siteDescription = globalInfo?.siteDescription || 'Interactive 3D Developer Portfolio';
-    const aboutMe = globalInfo?.aboutMe || 'I am a creative developer specializing in 3D web experiences.';
-
-    let content = `# ${siteTitle}\n`;
-    content += `> ${siteDescription}\n\n`;
+    let content = `# ${globalInfo.siteTitle}\n`;
+    content += `> ${globalInfo.siteDescription}\n\n`;
 
     content += `## Biography / About Me\n`;
-    content += `${aboutMe}\n\n`;
+    content += `${globalInfo.aboutMe}\n\n`;
+
+    content += `## Education\n`;
+    content += `- Bachelor of Technology — Electronics & Communication Engineering (Graduation: 2027)\n`;
+    content += `- M. S. Ramaiah University of Applied Sciences, Bangalore, India\n`;
+    content += `- Relevant Coursework: VLSI Design, Embedded Systems, Digital Electronics, C Programming, Python Programming\n\n`;
 
     content += `## Core Technologies & Skills\n`;
-    content += `- React, Three.js, React Three Fiber (R3F), GSAP (GreenSock), JavaScript, TypeScript, Next.js, WebGL, 3D Graphics, Web Development.\n\n`;
+    content += `- Embedded Systems & Hardware: ESP32, Microcontrollers, GPIO, UART, I2C, SPI, Sensor Interfacing, Real-Time Data Acquisition, Hardware Debugging\n`;
+    content += `- FPGA & VLSI: Verilog HDL, Digital Logic Design, FPGA Fundamentals, Intel Quartus Prime Lite\n`;
+    content += `- Programming Languages: Python, C, Embedded C\n`;
+    content += `- AI / Computer Vision: OpenCV, MediaPipe, CNN, Machine Learning\n`;
+    content += `- Tools: MATLAB, Git, GitHub, VS Code, Jupyter Notebook\n`;
+    content += `- Web Development: Next.js, TypeScript, Tailwind CSS, React, GSAP, Framer Motion\n\n`;
 
     if (projects && projects.length > 0) {
         content += `## Selected Portfolio Projects\n`;
         projects.forEach(p => {
-            const tech = p.techStack ? ` (Tech: ${p.techStack.map(t => TECH_STACK_NAMES[t] || t).join(', ')})` : '';
-            content += `- [${p.seoTitle || p.title}](${p.url || 'https://itomdev.com'}): ${p.seoDescription || p.description || ''}${tech}\n`;
-        });
-        content += `\n`;
-    }
-
-    if (studio && studio.length > 0) {
-        content += `## Studio Content & Publications\n`;
-        studio.forEach(s => {
-            content += `- [${s.seoTitle || s.title} (${s.platform})](${s.url || 'https://itomdev.com'}): ${s.seoDescription || s.description || ''}\n`;
+            const tech = p.techStack ? ` (Tech: ${p.techStack.join(', ')})` : '';
+            content += `- **${p.seoTitle || p.title}**: ${p.seoDescription || p.description || ''}${tech}\n`;
         });
         content += `\n`;
     }
 
     if (awards && awards.length > 0) {
-        content += `## Design Awards & Achievements\n`;
-        const categoryLabels = { sotd: 'Site of the Day', sotm: 'Site of the Month', other: 'Honorable Mention' };
+        content += `## Honors & Extracurricular Activities\n`;
         awards.forEach(a => {
-            const category = categoryLabels[a.category] || a.category;
-            content += `- **${category}** — [${a.seoTitle || a.title}](${a.url || 'https://itomdev.com'}): Awarded on ${a.date || 'unknown'}. ${a.seoDescription || ''}\n`;
+            content += `- **${a.title}** (${a.date}): ${a.description}\n`;
         });
         content += `\n`;
     }
@@ -304,21 +265,9 @@ function buildLlmsTxt(globalInfo, projects, studio, awards, faqList) {
 export function generateSeoHtml() {
     let cachedLlmsContent = '';
 
-    async function getLlmsContent() {
+    function getLlmsContent() {
         if (!cachedLlmsContent) {
-            try {
-                const [globalInfo, projects, studio, awards, faqList] = await Promise.all([
-                    sanityClient.fetch(`*[_id == "globalInfo"][0]`),
-                    sanityClient.fetch(`*[_type == "galleryProject"]`),
-                    sanityClient.fetch(`*[_type == "studioItem"]`),
-                    sanityClient.fetch(`*[_type == "awardCertificate"]`),
-                    sanityClient.fetch(`*[_type == "faq"]`)
-                ]);
-                cachedLlmsContent = buildLlmsTxt(globalInfo, projects, studio, awards, faqList);
-            } catch (e) {
-                console.error('SEO Plugin Error: Failed to fetch Sanity data for llms.txt', e);
-                cachedLlmsContent = `# Tomasz Szmajda\n> Creative Developer\n`;
-            }
+            cachedLlmsContent = buildLlmsTxt(DASARI_GLOBAL, DASARI_PROJECTS, DASARI_STUDIO, DASARI_AWARDS, DASARI_FAQS);
         }
         return cachedLlmsContent;
     }
@@ -326,11 +275,10 @@ export function generateSeoHtml() {
     return {
         name: 'sanity-seo-plugin',
 
-        // Serve llms.txt in local development mode
         configureServer(server) {
             server.middlewares.use(async (req, res, next) => {
                 if (req.url === '/llms.txt') {
-                    const content = await getLlmsContent();
+                    const content = getLlmsContent();
                     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
                     res.end(content);
                 } else {
@@ -339,29 +287,20 @@ export function generateSeoHtml() {
             });
         },
 
-        // This hook runs when Vite generates or serves index.html
         async transformIndexHtml(html) {
             try {
-                // Fetch all data in parallel
-                const [globalInfo, projects, studio, awards, faqList] = await Promise.all([
-                    sanityClient.fetch(`*[_id == "globalInfo"][0]`),
-                    sanityClient.fetch(`*[_type == "galleryProject"]`),
-                    sanityClient.fetch(`*[_type == "studioItem"] { ..., "thumbnailUrl": frontTexture.asset->url }`),
-                    sanityClient.fetch(`*[_type == "awardCertificate"]`),
-                    sanityClient.fetch(`*[_type == "faq"]`)
-                ]);
+                const globalInfo = DASARI_GLOBAL;
+                const projects = DASARI_PROJECTS;
+                const studio = DASARI_STUDIO;
+                const awards = DASARI_AWARDS;
+                const faqList = DASARI_FAQS;
 
-                // Fallback values if globalInfo is not yet created in Sanity
-                const siteTitle = globalInfo?.siteTitle || 'ITom - Creative Developer';
-                const siteDescription = globalInfo?.siteDescription || 'Interactive 3D portfolio of a creative web developer.';
-                const aboutMe = globalInfo?.aboutMe || 'I am a creative developer specializing in 3D web experiences.';
+                const siteTitle = globalInfo.siteTitle;
+                const siteDescription = globalInfo.siteDescription;
 
-                // Cache llms.txt content for later bundle emission
                 cachedLlmsContent = buildLlmsTxt(globalInfo, projects, studio, awards, faqList);
 
-                // ====== PART 1: Build the semantic HTML string ======
                 let seoHtml = `\n<div id="seo-content" class="sr-only-seo">\n`;
-                
                 seoHtml += `  <header>\n`;
                 seoHtml += `    <h1>${siteTitle}</h1>\n`;
                 seoHtml += `    <p>${siteDescription}</p>\n`;
@@ -369,9 +308,9 @@ export function generateSeoHtml() {
 
                 seoHtml += `  <section id="about">\n`;
                 seoHtml += `    <h2>About Me</h2>\n`;
-                seoHtml += `    <p>${aboutMe}</p>\n`;
-                if (globalInfo?.githubUrl) seoHtml += `    <a href="${globalInfo.githubUrl}">GitHub</a>\n`;
-                if (globalInfo?.linkedinUrl) seoHtml += `    <a href="${globalInfo.linkedinUrl}">LinkedIn</a>\n`;
+                seoHtml += `    <p>${globalInfo.aboutMe}</p>\n`;
+                seoHtml += `    <a href="mailto:pavandasari342@gmail.com">Email: pavandasari342@gmail.com</a>\n`;
+                seoHtml += `    <a href="tel:+917989127818">Phone: +91 7989127818</a>\n`;
                 seoHtml += `  </section>\n`;
 
                 if (projects && projects.length > 0) {
@@ -383,22 +322,21 @@ export function generateSeoHtml() {
                 }
 
                 if (studio && studio.length > 0) {
-                    seoHtml += `  <section id="studio">\n    <h2>The Studio (Content)</h2>\n    <ul>\n`;
+                    seoHtml += `  <section id="studio">\n    <h2>Engineering Lab</h2>\n    <ul>\n`;
                     studio.forEach(s => {
-                        seoHtml += `      <li>\n        <h3>${s.seoTitle || s.title} (${s.platform})</h3>\n        <p>${s.seoDescription || s.description || ''}</p>\n        ${s.url ? `<a href="${s.url}">View Content</a>\n` : ''}      </li>\n`;
+                        seoHtml += `      <li>\n        <h3>${s.title}</h3>\n        <p>${s.description}</p>\n      </li>\n`;
                     });
                     seoHtml += `    </ul>\n  </section>\n`;
                 }
 
                 if (awards && awards.length > 0) {
-                    seoHtml += `  <section id="awards">\n    <h2>Awards & Certificates</h2>\n    <ul>\n`;
+                    seoHtml += `  <section id="awards">\n    <h2>Honors & Leadership</h2>\n    <ul>\n`;
                     awards.forEach(a => {
-                        seoHtml += `      <li>\n        <h3>${a.seoTitle || a.title}</h3>\n        <p>${a.category} - ${a.date}</p>\n        <p>${a.seoDescription || ''}</p>\n        ${a.url ? `<a href="${a.url}">Link</a>\n` : ''}      </li>\n`;
+                        seoHtml += `      <li>\n        <h3>${a.title}</h3>\n        <p>${a.date} — ${a.description}</p>\n      </li>\n`;
                     });
                     seoHtml += `    </ul>\n  </section>\n`;
                 }
 
-                // FAQ Section (GEO/AI search optimizer fallback)
                 if (faqList && faqList.length > 0) {
                     seoHtml += `  <section id="faq">\n`;
                     seoHtml += `    <h2>Frequently Asked Questions (FAQ)</h2>\n`;
@@ -413,31 +351,21 @@ export function generateSeoHtml() {
 
                 seoHtml += `</div>\n`;
 
-                // ====== PART 2: Build dynamic JSON-LD ======
                 const jsonLdSchemas = buildJsonLd(globalInfo, projects, studio, awards, faqList);
-                const jsonLdScript = `\n  <!-- Dynamic Structured Data (JSON-LD) — generated from Sanity at build time -->\n  <script type="application/ld+json">\n${JSON.stringify(jsonLdSchemas, null, 2)}\n  </script>\n`;
+                const jsonLdScript = `\n  <!-- Dynamic Structured Data (JSON-LD) -->\n  <script type="application/ld+json">\n${JSON.stringify(jsonLdSchemas, null, 2)}\n  </script>\n`;
 
-                // ====== PART 3: Transform HTML ======
-                // Update the <title> tag
                 let transformedHtml = html.replace(
                     /<title>(.*?)<\/title>/,
                     `<title>${siteTitle}</title>`
                 );
-                
-                // Add or replace meta description
+
                 if (transformedHtml.includes('<meta name="description"')) {
                     transformedHtml = transformedHtml.replace(
                         /<meta name="description" content="(.*?)"\s*\/?>/,
                         `<meta name="description" content="${siteDescription}" />`
                     );
-                } else {
-                    transformedHtml = transformedHtml.replace(
-                        '</head>',
-                        `  <meta name="description" content="${siteDescription}" />\n</head>`
-                    );
                 }
 
-                // Update Open Graph dynamic metadata
                 transformedHtml = transformedHtml
                     .replace(
                         /<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/i,
@@ -448,7 +376,6 @@ export function generateSeoHtml() {
                         `<meta property="og:description" content="${siteDescription}" />`
                     );
 
-                // Update Twitter card dynamic metadata
                 transformedHtml = transformedHtml
                     .replace(
                         /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/i,
@@ -459,31 +386,26 @@ export function generateSeoHtml() {
                         `<meta name="twitter:description" content="${siteDescription}" />`
                     );
 
-                // Inject dynamic JSON-LD right before </head> (next to the existing static one)
                 transformedHtml = transformedHtml.replace('</head>', `${jsonLdScript}</head>`);
 
-                // Replace the static placeholder with the dynamic one to prevent duplicate #seo-content and double h1s
                 if (transformedHtml.includes('id="seo-content"')) {
                     transformedHtml = transformedHtml.replace(
                         /<div id="seo-content" class="sr-only-seo">[\s\S]*?<\/div>/,
                         seoHtml
                     );
                 } else {
-                    // Fallback injection if the template doesn't contain the static block
                     transformedHtml = transformedHtml.replace('</body>', `${seoHtml}</body>`);
                 }
 
                 return transformedHtml;
             } catch (error) {
-                console.error('SEO Plugin Error: Failed to fetch Sanity data', error);
-                // Return original HTML on failure so we don't break the build
+                console.error('SEO Plugin Error:', error);
                 return html;
             }
         },
 
-        // Emit llms.txt to the build output directory
         async generateBundle() {
-            const content = await getLlmsContent();
+            const content = getLlmsContent();
             this.emitFile({
                 type: 'asset',
                 fileName: 'llms.txt',

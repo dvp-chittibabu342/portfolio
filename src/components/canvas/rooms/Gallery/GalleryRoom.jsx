@@ -36,40 +36,40 @@ export const GALLERY_INTERACTION_AUDIO_SETTINGS = {
 // Define the unique projects and their textures
 const FALLBACK_PROJECTS = [
     {
-        id: 'monetune',
-        title: 'MONETUNE',
+        id: 'road-hazard',
+        title: 'AI ROAD HAZARD',
         front: '/textures/gallery/monetuneprzod.webp',
         painted: '/textures/gallery/monetuneprzod_painted.webp',
-        url: 'https://monetune.pl',
-        description: 'MoneTune is a step-by-step blueprint that teaches beginners how to generate passive income using AI-created music. Without any musical skills, you will learn how to easily produce professional tracks, publish them on platforms like Spotify, and monetize your digital assets.',
-        techStack: ['/textures/gallery/wordpresslogo.webp', '/textures/gallery/elementorlogo.webp', '/textures/gallery/phplogo.webp', '/textures/gallery/csslogo.webp']
+        url: '#',
+        description: 'Neuro-symbolic road hazard intelligence system designed for eMudhra Hackathon 2026. Fuses IMU vibration analysis, CNN visual classification (YOLO/MobileNet), and GPS-based multi-vehicle clustering with a confidence-cascade escalation model (log -> warn -> alert) on an ESP32 hardware architecture.',
+        techStack: ['/textures/gallery/reactlogo.webp', '/textures/gallery/jslogo.webp', '/textures/gallery/csslogo.webp', '/textures/gallery/htmllogo.webp']
     },
     {
-        id: 'timber',
-        title: 'TIMBERKITTY',
+        id: 'health-monitor',
+        title: 'HEALTH MONITOR',
         front: '/textures/gallery/timberkittyprzod.webp',
         painted: '/textures/gallery/timberkittyprzod_painted.webp',
-        url: 'https://timberkitty.netlify.app',
-        description: 'TimberKitty is an addictive, free-to-play browser arcade game built in pure JavaScript. Players control a lumberjack cat to chop wood, save birds, complete daily missions, and compete on global leaderboards.',
-        techStack: ['/textures/gallery/jslogo.webp', '/textures/gallery/htmllogo.webp', '/textures/gallery/csslogo.webp', '/textures/gallery/firebaselogo.webp']
+        url: '#',
+        description: 'Real-time health monitoring system built with ESP32 and Embedded C (Sep 2025 – Oct 2025). Interfaces multiple physiological sensors for live vital parameter acquisition and wireless telemetry, with end-to-end hardware-software integration, testing, and debugging.',
+        techStack: ['/textures/gallery/jslogo.webp', '/textures/gallery/htmllogo.webp', '/textures/gallery/csslogo.webp', '/textures/gallery/reactlogo.webp']
     },
     {
-        id: 'young',
-        title: 'YOUNG MULTI',
+        id: 'hand-sign',
+        title: 'HAND SIGN CV',
         front: '/textures/gallery/youngmultiprzod.webp',
         painted: '/textures/gallery/youngmultiprzod_painted.webp',
-        url: 'https://young-multi-strona.netlify.app',
-        description: 'A sleek, modern concept website dedicated to the Polish rapper and creator Young Multi. It serves as a promotional landing page designed to highlight his personal brand, music, and online presence.',
-        techStack: ['/textures/gallery/reactlogo.webp', '/textures/gallery/tailwindlogo.webp', '/textures/gallery/htmllogo.webp', '/textures/gallery/netlifylogo.webp']
+        url: '#',
+        description: 'Computer vision pipeline developed in Python using MediaPipe and CNN (Nov 2025 – Dec 2025). Extracts 21 hand landmarks from video input in real time and classifies gesture and word-sign patterns for assistive communication.',
+        techStack: ['/textures/gallery/reactlogo.webp', '/textures/gallery/tailwindlogo.webp', '/textures/gallery/htmllogo.webp', '/textures/gallery/jslogo.webp']
     },
     {
-        id: 'bio',
-        title: 'BIO',
+        id: 'apslock',
+        title: 'APSLOCK AGENCY',
         front: '/textures/gallery/bioprzod.webp',
         painted: '/textures/gallery/bioprzod_painted.webp',
-        url: 'https://tomkingbio.netlify.app',
-        description: 'A fast, modern personal bio page serving as a central hub for my digital footprint. It showcases my latest coding projects, web development services, YouTube videos, and recommended music artists.',
-        techStack: ['/textures/gallery/htmllogo.webp', '/textures/gallery/csslogo.webp', '/textures/gallery/jslogo.webp', '/textures/gallery/netlifylogo.webp']
+        url: 'https://www.apslock.com/',
+        description: 'Freelance front-end engineering for APSLOCK agency (Mar 2026 – Apr 2026). Collaborated with the core team to build the client-facing website using Next.js, TypeScript, and Tailwind CSS, engineering custom animations with GSAP and Framer Motion.',
+        techStack: ['/textures/gallery/reactlogo.webp', '/textures/gallery/tailwindlogo.webp', '/textures/gallery/jslogo.webp', '/textures/gallery/csslogo.webp']
     },
 ];
 

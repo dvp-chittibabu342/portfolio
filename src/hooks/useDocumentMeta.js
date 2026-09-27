@@ -12,28 +12,28 @@ import { useScene } from '../context/SceneContext';
 const ROOM_META = {
     null: {
         path: '/',
-        title: 'ITom — Creative 3D Portfolio',
-        description: 'Interactive 3D developer portfolio by Tomasz "ITom" Szmajda. Explore WebGL experiments, React projects & GSAP animations in a hand-drawn gallery.',
+        title: 'Dasari Venkata Panakala Chitti Babu — Embedded Systems & Hardware Engineer',
+        description: 'Interactive 3D portfolio of Dasari Venkata Panakala Chitti Babu. Embedded Systems Engineer specializing in ESP32, FPGA, Verilog HDL, VLSI, and AI-driven hardware.',
     },
     about: {
         path: '/about',
-        title: 'About Me — ITom Portfolio',
-        description: 'Learn about Tomasz "ITom" Szmajda — a creative frontend developer specializing in 3D web experiences, React, Three.js, and GSAP animations.',
+        title: 'About Me — Dasari Venkata Panakala Chitti Babu',
+        description: 'Learn about Dasari Venkata Panakala Chitti Babu — an Electronics and Communication Engineering undergraduate specializing in Embedded Systems, ESP32, FPGA, and hardware-software co-design.',
     },
     gallery: {
         path: '/gallery',
-        title: 'Gallery & Projects — ITom Portfolio',
-        description: 'Browse the interactive 3D gallery of web development projects by ITom. Each project is displayed as a hand-drawn card you can flip and explore.',
+        title: 'Gallery & Projects — Dasari Venkata Panakala Chitti Babu',
+        description: 'Browse interactive 3D cards of hardware and software projects: AI-Powered Road Hazard Intelligence, ESP32 Health Monitor, MediaPipe Hand Sign Detection, and APSLOCK web engineering.',
     },
     studio: {
         path: '/studio',
-        title: 'The Studio — ITom Portfolio',
-        description: 'Explore ITom\'s content studio — YouTube videos, blog posts, and TikToks displayed on floating monitors in an immersive 3D space.',
+        title: 'Engineering Lab — Dasari Venkata Panakala Chitti Babu',
+        description: 'Explore engineering insights, hardware architecture breakdowns, and research articles on floating interactive monitors.',
     },
     contact: {
         path: '/contact',
-        title: 'Contact — ITom Portfolio',
-        description: 'Get in touch with Tomasz "ITom" Szmajda. Find social media links and contact information in this interactive 3D contact room.',
+        title: 'Contact — Dasari Venkata Panakala Chitti Babu',
+        description: 'Get in touch with Dasari Venkata Panakala Chitti Babu for Embedded Systems, FPGA, VLSI, and AIML Hardware Internship opportunities.',
     },
 };
 
@@ -82,12 +82,12 @@ export function useDocumentMeta() {
         if (ogDesc) ogDesc.setAttribute('content', meta.description);
 
         const ogUrl = document.querySelector('meta[property="og:url"]');
-        if (ogUrl) ogUrl.setAttribute('content', `https://itomdev.com${meta.path}`);
+        if (ogUrl) ogUrl.setAttribute('content', `https://portfolio.dasari.dev${meta.path}`);
 
         // Update canonical link to ensure virtual routes are correctly indexable as separate pages
         const canonicalTag = document.querySelector('link[rel="canonical"]');
         if (canonicalTag) {
-            canonicalTag.setAttribute('href', `https://itomdev.com${meta.path}`);
+            canonicalTag.setAttribute('href', `https://portfolio.dasari.dev${meta.path}`);
         }
 
         // Push to browser history (only if not handling a popstate event and room actually changed)

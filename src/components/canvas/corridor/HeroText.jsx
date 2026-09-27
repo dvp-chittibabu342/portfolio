@@ -54,20 +54,23 @@ const HeroText = ({ position = [0, 0.3, 0] }) => {
     // Pre-allocate Vector3 to avoid per-frame garbage collection
     const worldPosVec = useRef(new THREE.Vector3());
 
-    // Letter positions for ITOM split effect
+    // Letter positions for DASARI split effect
     const letters = useMemo(() => [
-        { char: 'I', baseX: -0.95, splitDir: -1.6, delay: 0 },
-        { char: 'T', baseX: -0.43, splitDir: -0.6, delay: 0 },
-        { char: 'O', baseX: 0.23, splitDir: 0.6, delay: 0 },
-        { char: 'M', baseX: 0.95, splitDir: 1.8, delay: 0 },
+        { char: 'D', baseX: -1.25, splitDir: -1.8, delay: 0 },
+        { char: 'A', baseX: -0.75, splitDir: -1.1, delay: 0 },
+        { char: 'S', baseX: -0.25, splitDir: -0.4, delay: 0 },
+        { char: 'A', baseX: 0.25, splitDir: 0.4, delay: 0 },
+        { char: 'R', baseX: 0.75, splitDir: 1.1, delay: 0 },
+        { char: 'I', baseX: 1.25, splitDir: 1.8, delay: 0 },
     ], []);
 
     // Tagline words for split effect
     const taglineWords = useMemo(() => [
-        { text: '<', baseX: -0.85, splitDir: -1.5, delay: 0 },
-        { text: 'creative', baseX: -0.4, splitDir: -0.8, delay: 0 },
-        { text: 'developer', baseX: 0.4, splitDir: 0.8, delay: 0 },
-        { text: '/>', baseX: 0.85, splitDir: 1.5, delay: 0 },
+        { text: '<', baseX: -1.1, splitDir: -1.5, delay: 0 },
+        { text: 'embedded', baseX: -0.55, splitDir: -0.8, delay: 0 },
+        { text: 'systems', baseX: 0.15, splitDir: 0.4, delay: 0 },
+        { text: '& hardware', baseX: 0.85, splitDir: 1.0, delay: 0 },
+        { text: '/>', baseX: 1.35, splitDir: 1.5, delay: 0 },
     ], []);
 
     // Animation loop
@@ -97,7 +100,7 @@ const HeroText = ({ position = [0, 0.3, 0] }) => {
 
         splitAmount.current = THREE.MathUtils.lerp(splitAmount.current, targetSplit.current, 0.08);
 
-        // Apply split to each letter of ITOM
+        // Apply split to each letter of DASARI
         letterRefs.current.forEach((ref, i) => {
             if (ref) {
                 // Ensure opacity is 1
@@ -131,13 +134,26 @@ const HeroText = ({ position = [0, 0.3, 0] }) => {
 
     return (
         <group ref={groupRef} position={position} scale={[scale, scale, 1]}>
-            {/* ITOM Letters - Rubik Scribble font with fade-in animation */}
+            {/* Full Name Badge above */}
+            <Text
+                position={[0, 0.95, 0]}
+                fontSize={0.2}
+                font={CABIN_SKETCH_URL}
+                color="#1a1a1a"
+                anchorX="center"
+                anchorY="middle"
+                letterSpacing={0.06}
+            >
+                DASARI VENKATA PANAKALA CHITTI BABU
+            </Text>
+
+            {/* DASARI Letters - Rubik Scribble font with fade-in animation */}
             {letters.map((letter, i) => (
                 <Text
                     key={letter.char}
                     ref={(el) => (letterRefs.current[i] = el)}
                     position={[letter.baseX, 0.2, 0]}
-                    fontSize={0.9}
+                    fontSize={0.85}
                     font={RUBIK_SCRIBBLE_URL}
                     color="#ffffff"
                     outlineWidth={0.012}
@@ -168,10 +184,10 @@ const HeroText = ({ position = [0, 0.3, 0] }) => {
             ))}
 
             {/* Small decorative doodles around title */}
-            <SmallStar position={[-1.2, 0.55, 0]} scale={0.07} />
-            <SmallStar position={[1.25, 0.45, 0]} scale={0.05} />
-            <SmallStar position={[-1.0, -0.6, 0]} scale={0.04} />
-            <SmallStar position={[1.1, -0.55, 0]} scale={0.035} />
+            <SmallStar position={[-1.6, 0.65, 0]} scale={0.07} />
+            <SmallStar position={[1.65, 0.55, 0]} scale={0.05} />
+            <SmallStar position={[-1.4, -0.6, 0]} scale={0.04} />
+            <SmallStar position={[1.4, -0.55, 0]} scale={0.035} />
         </group>
     );
 };

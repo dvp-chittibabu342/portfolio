@@ -1,4 +1,4 @@
-# 🎨 ITom Dev | Interactive 3D WebGL Portfolio
+# 🎨 Dasari Venkata Panakala Chitti Babu | Interactive 3D WebGL Portfolio
 
 <div align="center">
   <img src="https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react" alt="React" />
@@ -10,7 +10,7 @@
 
 <br/>
 
-Welcome to the open-source repository of **Tomasz "ITom" Szmajda's** interactive 3D Web Developer portfolio. This project pushes the limits of modern web technologies by blending spatial WebGL computing, complex React ecosystems, and highly optimized frontend engineering.
+Welcome to the interactive 3D portfolio of **Dasari Venkata Panakala Chitti Babu** — Embedded Systems Engineer specializing in FPGA, VLSI & AI-Driven Hardware. This project pushes the limits of modern web technologies by blending spatial WebGL computing, complex React ecosystems, and highly optimized frontend engineering.
 
 > [!NOTE]
 > Ensure hardware acceleration is enabled in your browser settings to experience the smooth 60 FPS high-tier rendering of this application.
@@ -84,12 +84,9 @@ All PRs improving the shader physics, 3D math logic, or component memoization ru
 
 ## License
 
-The code in this repository is licensed under the [MIT License](LICENSE). 
-**Note:** All personal assets, 3D textures, images, and copywriting are copyright of Tomasz Szmajda and may not be reused or reproduced without explicit permission.
-3. Commit your Changes (`git commit -m 'feat: Added realistic liquid simulation to Contact Room'`)
-4. Push to the Branch (`git push origin feature/AmazingRoom`)
-5. Open a Pull Request
+**Note:** Personal portfolio content and project details belong to Dasari Venkata Panakala Chitti Babu.
 
 ---
 
-*Designed and Developed by [Tomasz Szmajda (ITom Dev)](https://itomdev.com).*
+*Portfolio of [Dasari Venkata Panakala Chitti Babu](https://portfolio.dasari.dev).*
+
