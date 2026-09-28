@@ -64,9 +64,7 @@ const SocialBarrel = ({ position, rotation = [0, 0, 0], texturePath, label, onCl
 
     const handlePointerOver = () => {
         if (isTouch) return;
-        if (!disabled) {
-            document.body.style.cursor = 'pointer';
-        }
+        document.body.style.cursor = disabled ? 'not-allowed' : 'pointer';
         setHovered(true);
 
         if (materialRef.current) {

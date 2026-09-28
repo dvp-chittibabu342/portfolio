@@ -2,7 +2,7 @@ import { createClient } from '@sanity/client';
 import { createImageUrlBuilder } from '@sanity/image-url';
 
 export const sanityClient = createClient({
-    projectId: 'YOUR_PROJECT_ID', // Reset to YOUR_PROJECT_ID to use local portfolio data
+    projectId: 'local-fallback', // Valid format; local portfolio data will be used
     dataset: 'production',
     useCdn: true, // `false` dla środowiska dev, `true` dla produkcji żeby było szybciej
     apiVersion: '2024-03-01', // aktualna data API

@@ -26,11 +26,11 @@ const ScreenReaderOverlay = () => {
 
             {/* Main accessible navigation */}
             <nav id="sr-main-nav" className="sr-only" aria-label="Portfolio rooms">
-                <h1>Dasari Venkata Panakala Chitti Babu — Embedded Systems &amp; Hardware Engineer Portfolio</h1>
+                <h1>DVP — Dasari Venkata Panakala Chitti Babu | Embedded Systems &amp; Hardware Engineer Portfolio</h1>
                 <h2>Portfolio Navigation</h2>
 
                 {!hasEntered && (
-                    <p>Welcome to Dasari Venkata Panakala Chitti Babu's interactive 3D portfolio. Click or press Enter on the doors to enter.</p>
+                    <p>Welcome to DVP's (Dasari Venkata Panakala Chitti Babu) interactive 3D portfolio. Click or press Enter on the doors to enter.</p>
                 )}
 
                 {hasEntered && !isInRoom && (
@@ -118,7 +118,14 @@ const ScreenReaderOverlay = () => {
                         {currentRoom === 'contact' && (
                             <div aria-label="Contact room content">
                                 <h3>Contact Me</h3>
-                                <p>Find my social media links displayed as floating barrels. Click to visit my profiles on LinkedIn, GitHub, and other platforms.</p>
+                                <p>Find my social and contact channels displayed as floating barrels: Email, Phone, APSLOCK, LinkedIn, and GitHub.</p>
+                                <ul>
+                                    <li><a href="mailto:pavandasari342@gmail.com">Email: pavandasari342@gmail.com</a></li>
+                                    <li><a href="tel:+917989127818">Phone: +91 7989127818</a></li>
+                                    <li><a href="https://www.linkedin.com/in/dvpchittibabu342/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></li>
+                                    <li><a href="https://github.com/dvp-chittibabu342" target="_blank" rel="noopener noreferrer">GitHub Profile</a></li>
+                                    <li><a href="https://www.apslock.com/" target="_blank" rel="noopener noreferrer">APSLOCK Agency</a></li>
+                                </ul>
                             </div>
                         )}
                         {currentRoom === 'studio' && (

@@ -346,13 +346,14 @@ const IntroMilestone = ({ z, scrollProgressRef }) => {
             <Text
                 ref={titleRef}
                 position={[0, 5, 0.1]}
-                fontSize={0.8}
+                fontSize={0.52}
                 color="#1a1a1a"
                 anchorX="center"
                 anchorY="middle"
                 font="/fonts/RubikScribble-Regular.ttf"
+                letterSpacing={0.02}
             >
-                DASARI CHITTI BABU
+                DASARI VENKATA PANAKALA CHITTI BABU
             </Text>
 
             {/* Subtitle - Brand (spreads right) */}

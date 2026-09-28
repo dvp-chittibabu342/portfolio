@@ -14,7 +14,7 @@ let hasPlayedDrawAnimation = false;
  * HeroText Component - Hand-drawn Style with Sketch Fonts
  * 
  * WOW Effects for Awwwards SOTD:
- * - ITOM in Rubik Scribble font (splits into letters during scroll)
+ * - DVP in Rubik Scribble font (splits into letters during scroll)
  * - Creative developer in Cabin Sketch font (also splits)
  * - Floating micro-animations
  * - Parallax split effect
@@ -54,14 +54,11 @@ const HeroText = ({ position = [0, 0.3, 0] }) => {
     // Pre-allocate Vector3 to avoid per-frame garbage collection
     const worldPosVec = useRef(new THREE.Vector3());
 
-    // Letter positions for DASARI split effect
+    // Letter positions for DVP split effect
     const letters = useMemo(() => [
-        { char: 'D', baseX: -1.25, splitDir: -1.8, delay: 0 },
-        { char: 'A', baseX: -0.75, splitDir: -1.1, delay: 0 },
-        { char: 'S', baseX: -0.25, splitDir: -0.4, delay: 0 },
-        { char: 'A', baseX: 0.25, splitDir: 0.4, delay: 0 },
-        { char: 'R', baseX: 0.75, splitDir: 1.1, delay: 0 },
-        { char: 'I', baseX: 1.25, splitDir: 1.8, delay: 0 },
+        { char: 'D', baseX: -0.7, splitDir: -1.2, delay: 0 },
+        { char: 'V', baseX: 0.0, splitDir: 0.0, delay: 0 },
+        { char: 'P', baseX: 0.7, splitDir: 1.2, delay: 0 },
     ], []);
 
     // Tagline words for split effect
@@ -147,7 +144,7 @@ const HeroText = ({ position = [0, 0.3, 0] }) => {
                 DASARI VENKATA PANAKALA CHITTI BABU
             </Text>
 
-            {/* DASARI Letters - Rubik Scribble font with fade-in animation */}
+            {/* DVP Letters - Rubik Scribble font with split animation */}
             {letters.map((letter, i) => (
                 <Text
                     key={letter.char}
@@ -184,10 +181,10 @@ const HeroText = ({ position = [0, 0.3, 0] }) => {
             ))}
 
             {/* Small decorative doodles around title */}
-            <SmallStar position={[-1.6, 0.65, 0]} scale={0.07} />
-            <SmallStar position={[1.65, 0.55, 0]} scale={0.05} />
-            <SmallStar position={[-1.4, -0.6, 0]} scale={0.04} />
-            <SmallStar position={[1.4, -0.55, 0]} scale={0.035} />
+            <SmallStar position={[-1.2, 0.65, 0]} scale={0.07} />
+            <SmallStar position={[1.2, 0.55, 0]} scale={0.05} />
+            <SmallStar position={[-1.1, -0.6, 0]} scale={0.04} />
+            <SmallStar position={[1.1, -0.55, 0]} scale={0.035} />
         </group>
     );
 };

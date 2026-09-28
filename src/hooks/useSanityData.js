@@ -6,7 +6,7 @@ import { TextureLoader } from 'three';
 
 // Flaga bezpieczeństwa: Jeśli użytkownik nie wpisał jeszcze Project ID, 
 // hooki zwrócą null, co pozwoli na załadowanie danych hardcodowanych (fallback).
-export const isSanityConfigured = sanityClient.config().projectId !== 'YOUR_PROJECT_ID';
+export const isSanityConfigured = sanityClient.config().projectId !== 'local-fallback' && sanityClient.config().projectId !== 'YOUR_PROJECT_ID';
 
 // Globalny cache dla danych z Sanity
 const cache = {

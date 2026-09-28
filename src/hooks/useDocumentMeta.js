@@ -12,28 +12,28 @@ import { useScene } from '../context/SceneContext';
 const ROOM_META = {
     null: {
         path: '/',
-        title: 'Dasari Venkata Panakala Chitti Babu — Embedded Systems & Hardware Engineer',
-        description: 'Interactive 3D portfolio of Dasari Venkata Panakala Chitti Babu. Embedded Systems Engineer specializing in ESP32, FPGA, Verilog HDL, VLSI, and AI-driven hardware.',
+        title: 'DVP — Embedded Systems & Hardware Engineer',
+        description: 'Interactive 3D portfolio of Dasari Venkata Panakala Chitti Babu (DVP). Embedded Systems Engineer specializing in ESP32, FPGA, Verilog HDL, VLSI, and AI-driven hardware.',
     },
     about: {
         path: '/about',
-        title: 'About Me — Dasari Venkata Panakala Chitti Babu',
-        description: 'Learn about Dasari Venkata Panakala Chitti Babu — an Electronics and Communication Engineering undergraduate specializing in Embedded Systems, ESP32, FPGA, and hardware-software co-design.',
+        title: 'About Me — DVP',
+        description: 'Learn about Dasari Venkata Panakala Chitti Babu (DVP) — an Electronics and Communication Engineering undergraduate specializing in Embedded Systems, ESP32, FPGA, and hardware-software co-design.',
     },
     gallery: {
         path: '/gallery',
-        title: 'Gallery & Projects — Dasari Venkata Panakala Chitti Babu',
-        description: 'Browse interactive 3D cards of hardware and software projects: AI-Powered Road Hazard Intelligence, ESP32 Health Monitor, MediaPipe Hand Sign Detection, and APSLOCK web engineering.',
+        title: 'Gallery & Projects — DVP',
+        description: 'Browse interactive 3D cards of hardware and software projects by DVP (Dasari Venkata Panakala Chitti Babu): AI-Powered Road Hazard Intelligence, ESP32 Health Monitor, MediaPipe Hand Sign Detection, and APSLOCK web engineering.',
     },
     studio: {
         path: '/studio',
-        title: 'Engineering Lab — Dasari Venkata Panakala Chitti Babu',
-        description: 'Explore engineering insights, hardware architecture breakdowns, and research articles on floating interactive monitors.',
+        title: 'Engineering Lab — DVP',
+        description: 'Explore engineering insights, hardware architecture breakdowns, and research articles by DVP (Dasari Venkata Panakala Chitti Babu) on floating interactive monitors.',
     },
     contact: {
         path: '/contact',
-        title: 'Contact — Dasari Venkata Panakala Chitti Babu',
-        description: 'Get in touch with Dasari Venkata Panakala Chitti Babu for Embedded Systems, FPGA, VLSI, and AIML Hardware Internship opportunities.',
+        title: 'Contact — DVP',
+        description: 'Get in touch with Dasari Venkata Panakala Chitti Babu (DVP) for Embedded Systems, FPGA, VLSI, and AIML Hardware Internship opportunities.',
     },
 };
 

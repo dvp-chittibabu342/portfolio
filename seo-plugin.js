@@ -118,7 +118,7 @@ const DASARI_FAQS = [
     },
     {
         question: 'How can I contact Dasari?',
-        answer: 'You can contact him via email at pavandasari342@gmail.com or by phone at +91 7989127818.'
+        answer: 'You can contact him via email at pavandasari342@gmail.com, by phone at +91 7989127818, or connect on LinkedIn (https://www.linkedin.com/in/dvpchittibabu342/) and GitHub (https://github.com/dvp-chittibabu342).'
     }
 ];
 
@@ -137,6 +137,8 @@ function buildJsonLd(globalInfo, projects, studio, activities, faqList) {
             'MATLAB', 'Next.js', 'TypeScript', 'Tailwind CSS', 'React', 'GSAP'
         ],
         sameAs: [
+            'https://github.com/dvp-chittibabu342',
+            'https://www.linkedin.com/in/dvpchittibabu342/',
             'https://www.apslock.com/'
         ]
     };
@@ -300,6 +302,8 @@ export function generateSeoHtml() {
                 seoHtml += `    <p>${globalInfo.aboutMe}</p>\n`;
                 seoHtml += `    <a href="mailto:pavandasari342@gmail.com">Email: pavandasari342@gmail.com</a>\n`;
                 seoHtml += `    <a href="tel:+917989127818">Phone: +91 7989127818</a>\n`;
+                seoHtml += `    <a href="https://www.linkedin.com/in/dvpchittibabu342/" target="_blank" rel="noopener noreferrer">LinkedIn: dvpchittibabu342</a>\n`;
+                seoHtml += `    <a href="https://github.com/dvp-chittibabu342" target="_blank" rel="noopener noreferrer">GitHub: dvp-chittibabu342</a>\n`;
                 seoHtml += `  </section>\n`;
 
                 if (projects && projects.length > 0) {

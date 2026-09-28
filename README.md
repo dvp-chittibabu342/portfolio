@@ -1,4 +1,4 @@
-# 🎨 Dasari Venkata Panakala Chitti Babu | Interactive 3D WebGL Portfolio
+# 🎨 DVP | Interactive 3D WebGL Portfolio
 
 <div align="center">
   <img src="https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react" alt="React" />
@@ -10,7 +10,7 @@
 
 <br/>
 
-Welcome to the interactive 3D portfolio of **Dasari Venkata Panakala Chitti Babu** — Embedded Systems Engineer specializing in FPGA, VLSI & AI-Driven Hardware. This project pushes the limits of modern web technologies by blending spatial WebGL computing, complex React ecosystems, and highly optimized frontend engineering.
+Welcome to the interactive 3D portfolio of **Dasari Venkata Panakala Chitti Babu (DVP)** — Embedded Systems Engineer specializing in FPGA, VLSI & AI-Driven Hardware. This project pushes the limits of modern web technologies by blending spatial WebGL computing, complex React ecosystems, and highly optimized frontend engineering.
 
 > [!NOTE]
 > Ensure hardware acceleration is enabled in your browser settings to experience the smooth 60 FPS high-tier rendering of this application.
@@ -56,8 +56,8 @@ To run this application natively on your local machine:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/ITomPoland/portfolio-itom.git
-   cd portfolio-itom
+   git clone <repository-url>
+   cd portfolio-dvp
    ```
 
 2. **Install dependencies:**
@@ -84,9 +84,9 @@ All PRs improving the shader physics, 3D math logic, or component memoization ru
 
 ## License
 
-**Note:** Personal portfolio content and project details belong to Dasari Venkata Panakala Chitti Babu.
+**Note:** Personal portfolio content and project details belong to Dasari Venkata Panakala Chitti Babu (DVP).
 
 ---
 
-*Portfolio of Dasari Venkata Panakala Chitti Babu.*
+*Portfolio of Dasari Venkata Panakala Chitti Babu (DVP).*
 

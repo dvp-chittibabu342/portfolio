@@ -7,7 +7,7 @@ export default {
       name: 'siteTitle',
       title: 'Site Title (Meta Title)',
       type: 'string',
-      description: 'The title of your website for search engines (e.g. ITom - Creative Developer)',
+      description: 'The title of your website for search engines (e.g. DVP - Embedded Systems & Hardware Engineer)',
       validation: (Rule) => Rule.required(),
     },
     {
